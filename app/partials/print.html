@@ -1,4 +1,5 @@
 <!-- DinnerPreparation -->
+<ng-include src="'partials/header.html'"</ng-include>
 <div class="container-fluid" id="ViewSeven">
 <!-- 	<div class="row" style="background-color: rgba(200,200,200, 0.7); padding-bottom: 10px; border:2px solid black;">
 		<div class="col-md-12">
@@ -11,10 +12,22 @@
 		</div>
 
 		<div class="col-md-6" style="padding-top: 15px;">
-				<button type="button" class="btn btn-warning btn pull-right" id="lastBackButton" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px;">Go back and edit dinner</button>
+				<a href="#/search" type="button" class="btn btn-warning btn pull-right" id="lastBackButton" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px;">Go back and edit dinner</a>
 		</div>
 	</div>
-	
 
-	<span id="dishInfoList"></span>
+	<div ng-repeat="dish in selectedDinner" class="container">
+	<div class="col-md-3" style="min-height: 150px; padding: 5px;">
+		<img ng-src="{{dish.ImageURL}}" style="width: 100%">
+	</div>
+	<div class="col-md-4" style="height: 100%;">
+		<h2>{{dish.Title}}</h2>
+		<p>{{dish.Description}}</p>
+	</div>
+	<div class="col-md-5">
+		<h4>Preparation</h4>
+		<p>{{dish.Instructions}}</p>
+	</div>
+</div>
+
 </div>
