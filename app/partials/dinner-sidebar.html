@@ -9,31 +9,27 @@ this with Total price of the menu -->
 <!-- Total number of guest: {{getNumberOfGuests()}}
  -->
 
-<div id="sidebar" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;">
+<div id="sideBar" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;">
 	<div class="row" style="padding-top: 15px; padding-bottom: 15px; padding-left: 20px;">
 			
 			<text><b style="font-size: 18px;">My Dinner</b></br>People</text>
 
-			<span class="counter" id="numberOfGuests" style="font-size: 16px; font-family: Arial; padding-left: 30px;">{{ getNumberOfGuests() }}</span>
+			<div style="font-size: 16px; font-family: Arial; padding-left: 30px;">
+				<span id="numberOfGuests">{{getNumberOfGuests()}}</span>
+			</div>
+			
 				
 				<div class="btn-group" id="guestSelect">
-						
-						<div id="upDown">
-							<span class="addGuest">
-								<button ng-click="setNumberOfGuests(getNumberOfGuests()+1)" type="button" id="up" class="btn btn-default btn-xs">
-									<span class="glyphicon glyphicon-chevron-up"></span>
-								</button>
-							</span>
-							
-							<span class="subtractGuest">
-								<button ng-click="setNumberOfGuests(getNumberOfGuests()-1)" type="button" id="down" class="btn btn-default btn-xs">
-									<span class="glyphicon glyphicon-chevron-down"></span>
-								</button>
-							</span>
-						</div>
+					<button ng-click="setNumberOfGuest(getNumberOfGuests()-1)" class="btn-xs" type="button">
+					<span class="glyphicon glyphicon-chevron-down"></span></button>
+					<button ng-click="setNumberOfGuest(getNumberOfGuests()+1)" class="btn-xs" type="button">
+						<span class="glyphicon glyphicon-chevron-up"></span>
+					</button>		
+
 				</div>
 	</div>
 	
+
 
 
 	<div class="row" style="background-color: rgb(180,180,180); border: 2px solid black;">
@@ -42,15 +38,20 @@ this with Total price of the menu -->
 	</div>
 	
 	<div id="addedDishes"></div>
-		
-	<div class="row" style="color: #B40404; margin-left: 1px; margin-right: 1px;">'
-		<div class="col-md-4" id="dishName" style="font-size: 12px; text-align: right; padding-left: 75px;">{{ getselectedDinner() }}</div>
-		<div class="col-md-4" id="dishPrice" style="font-size: 12px; text-align: right; padding-left: 50px;">{{ getDishPrice(id) }}</div>
+
+
+	<span id="sidebarDishes"></span>
+	<div ng-repeat="dish in selectedDinner">
+		<div class="col-md-4" style="font-size: 12px; text-align: right; padding-left: 75px;">{{dish.Title}}</div>
+		<div class="col-md-4" style="font-size: 12px; text-align: right; padding-left: 50px;">{{getDishPrice(dish)}}</div>
+		<div class="col-md-2">
+			<span ng-click="removeDishFromMenu(dish.RecipeID)" class="glyphicon glyphicon-remove-circle" type="button"></span>
+		</div>
 	</div>
 		
-	<div class="row" style="color: #B40404; border-top: 2px solid black; margin-top: 6px; margin-left: 1px; margin-right: 1px;">
-		<span class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice"></text>{{getTotalMenuPrice()}}</span>
-	</div>
-		<button class ="confirm" id="confirmDinner" type="button" class="btn btn-default" style="background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 20px;">Confirm Dinner</button>
+
+	<a href="#/overview" class ="btn btn-warning" id="confirmDinner" type="button" class="btn btn-default" style="background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 20px;">Confirm Dinner</a>
+
+
 
 </div>
