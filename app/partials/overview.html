@@ -1,0 +1,44 @@
+	<div id="overview">
+
+	<div class="row" style="background-color: NavajoWhite; max-height: 80px; min-height: 30px; margin-right: -15px; margin-left: -15px; border-bottom: 2px solid black; padding-left: 20px; padding-top: 5px; padding-bottom: 60px;">
+
+		<div class="col-md-6" style="font-size: 15px;">My Dinner:<span id="numberOfGuests">{{getNumberOfGuests()}}</span>People
+		</div>
+
+		<div class="col-md-6" id="editButton" style="padding-top: 10px;">
+			<a href="#/search" type="button" class="btn btn-warning btn pull-right" id="editDinner" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px; margin-right:20px">Go back and edit dinner</a>
+		</div>
+	</div>
+
+		<div class="row-md-1" style="padding-top: 50px;"></div>
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-6">
+
+				<div class="col-md-4" ng-repeat="dish in selectedDinner">
+					<div class="container" style="padding: 0; border-style: groove;">
+						<img ng-src="{{dish.ImageURL}}" style="width: 100%;"></br>
+						<label style="float: center;">{{dish.Title}}</label>
+					</div></br>
+					<p1 style="float: right;">SEK {{getDishPrice(dish)}}</p1>
+				</div>
+
+			</div>
+			
+			<div class="col-md-3" style="border-left-style: groove;">
+				<div class="container" style="padding: 0;">
+					<div class="container" style="padding: 0; height: 160px;">
+					</div>
+					</br><label style="text-align: center;">Total:</label>
+				</div>
+				</br><p id="totalConfirmPrice">SEK {{getTotalMenuPrice()}}
+				</p>
+		</div>
+
+		<div class="col-md-12" style="padding: 50px; text-align: center;">
+			<a href="#/print" id="printbutton" class="btn-lg btn-warning">Print Full Recipe</a>
+		</div>
+	</div>
+
+
+	<!-- GAMMAL VIEW FRÅN LABB 4-->
