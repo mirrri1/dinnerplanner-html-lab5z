@@ -7,7 +7,7 @@
 		<div class="form-group" style=" border: 1px solid black; margin-left: 20px; margin-right: 20px;">
 			<input id="searchWord" type="Enter key word" class="form-control" placeholder="Enter keywords">
 		</div>
-			<button id ="buttonSearch" type="submit" class="btn btn-default" style=" border: 2.5px solid black; margin-left: -26px; background-color: coral;">Search</button>
+			<button ng-click="search(query)" id="buttonSearch" type="submit" class="btn btn-default" style=" border: 2.5px solid black; margin-left: -26px; background-color: coral;">Search</button>
 			<select class="form-control" id="typeSearch" style=" border: 1px solid black; margin-left: 30px; width: 300px;">
 				<option>Select Type</option>
 				<option value="Appetizers">Starter</option>
@@ -17,7 +17,26 @@
 			</form>
 		</div>
 		<p id="errorMessage"></p>
-		<div class="row" id="dishImage"></div>
+		<div class="row-md-1" id="dishImage" style="height: 85%; max-width: 100%; padding-top: 50px">	
+		{{status}}
+		<div ng-repeat="dish in dishes">
+			<a ng-href="#/dish/{{dish.RecipeID}}">
+				<div class="col-md-3">
+					<img ng-src="{{dish.ImageURL}}" style="width: 100%; height: 195px;">
+					</br>
+					<label style="float: center;">{{dish.Title}}</label>
+					</br>
+				</div>
+			</a>
+
+			<!-- {{dish.Category}} {{dish.Subcategory}} -->
+		</div>	
+
+		<!-- <img src="images/spin.gif" id="loadingGif">
+		<span id="dishSpace"></span>
+		<span id="errorFieldDish"></span> -->
+
+	</div>
 
 </div>
 
