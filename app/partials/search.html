@@ -1,29 +1,17 @@
 <!-- We include the sidebar as it is shared across two screens. -->
 <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
-<div id="selectDish" class="col-md-9" style="height: 100%;">
-
-	<!-- Search and Filter Bar -->
-	<div class="container" style="background-color: #f0ad4e; max-width: 100%;">
-		<div class="row-md-1" style="height: 15%;">
-			<h3>Select dish	</h3>
+<div class="col-md-10" id="ScreenAfterMainView">
+	<div class="row" style="background-color: NavajoWhite; border: 2px solid black; padding-bottom: 30px; padding-top: 10px; margin-left: -15px; margin-right: -15px;"> <h4 style="border-bottom: 2px solid black; margin-left: 20px; margin-right: 20px;"><b>SELECT DISH</b></h4>
+		<form class = "form-inline">
+		<div class="form-group" style=" border: 1px solid black; margin-left: 20px; margin-right: 20px;">
+			<input ng-model="query" id="searchWord" type="Enter key word" class="form-control" placeholder="Enter keywords">
 		</div>
-		<div class="col-md-4" style="padding: 0;">
-			<div class="col-md-10" style="padding-bottom:12px; padding-left: 0; padding-right: 0; float: left;">
-				<input ng-model="query" class="form-control" id="inputKeyWord" type="text" placeholder="Enter Key Words">
-			</div>
+			<button ng-click="search(query)" id="buttonSearch" type="submit" class="btn btn-default" style=" border: 2.5px solid black; margin-left: -26px; background-color: coral;">Search</button>
+			</form>
 		</div>
-		<div class="col-md-2" style="padding-left: 0; padding-right: 0;">
-			<button ng-click="search(query)" class="btn btn-info" type="button">
-                <i class="glyphicon glyphicon-search"></i>
-			</button>
-		</div>
-		<div class="col-md-8">
-		</div>		
-	</div>
-	
-	<!-- Space for the selectable dishes -->
-	<div class="row-md-1" id="dishContainer" style="height: 85%; max-width: 100%; padding-top: 50px">	
+		<p id="errorMessage"></p>
+		<div class="row-md-1" id="dishImage" style="height: 85%; max-width: 100%; padding-top: 50px">	
 		{{status}}
 		<div ng-repeat="dish in dishes">
 			<a ng-href="#/dish/{{dish.RecipeID}}">
@@ -43,6 +31,7 @@
 		<span id="errorFieldDish"></span> -->
 
 	</div>
+
 </div>
 
 
